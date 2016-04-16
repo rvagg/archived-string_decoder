@@ -21,12 +21,10 @@
 
 var Buffer = require('buffer').Buffer;
 
+var bufferEncodings = ['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw']
 var isBufferEncoding = Buffer.isEncoding
   || function(encoding) {
-       switch (encoding && encoding.toLowerCase()) {
-         case 'hex': case 'utf8': case 'utf-8': case 'ascii': case 'binary': case 'base64': case 'ucs2': case 'ucs-2': case 'utf16le': case 'utf-16le': case 'raw': return true;
-         default: return false;
-       }
+       return bufferEncodings.indexOf(encoding.toLowerCase()) !== -1
      }
 
 
